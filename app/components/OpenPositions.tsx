@@ -77,7 +77,7 @@ export default function OpenPositions() {
           </p>
         </div>
 
-        <div className="mt-14 grid grid-cols-2 gap-5 lg:grid-cols-4">
+        <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {jobs.map((job, i) => (
             <Reveal key={job.title} delay={i * 100}>
               <div className="flex h-full flex-col rounded-2xl bg-white p-6 shadow-sm">

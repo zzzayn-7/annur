@@ -138,7 +138,7 @@ export default function CurrentOpportunities() {
             placeholder="Search by keyword or job title"
             className={selectClass}
           />
-          <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
+          <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
             <select value={location} onChange={(e) => setLocation(e.target.value)} className={selectClass}>
               {locations.map((option) => (
                 <option key={option}>{option}</option>

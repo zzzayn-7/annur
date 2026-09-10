@@ -24,6 +24,21 @@ export default function ContactHero() {
           Whether you&rsquo;re hiring talent or looking for your next
           opportunity, tell us more and we&rsquo;ll be in touch.
         </p>
+
+        <a
+          href="tel:+16102265045"
+          className="mt-6 inline-flex items-center gap-2 rounded-full border border-border bg-white/70 px-5 py-2.5 text-sm font-semibold text-foreground backdrop-blur-sm transition-colors hover:border-brand-orange hover:text-brand-orange"
+        >
+          <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4 shrink-0">
+            <path
+              d="M5 4h3.5l1.5 4-2 1.5a11 11 0 0 0 5.5 5.5l1.5-2 4 1.5V18a2 2 0 0 1-2 2C10.5 20 4 13.5 4 6a2 2 0 0 1 1-2Z"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinejoin="round"
+            />
+          </svg>
+          610 226 5045
+        </a>
       </div>
     </section>
   );

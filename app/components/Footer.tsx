@@ -29,6 +29,20 @@ export default function Footer() {
               A people-focused recruitment agency connecting ambitious
               professionals with organizations ready to grow.
             </p>
+            <a
+              href="tel:+16102265045"
+              className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-foreground transition-colors hover:text-brand-red"
+            >
+              <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4 shrink-0">
+                <path
+                  d="M5 4h3.5l1.5 4-2 1.5a11 11 0 0 0 5.5 5.5l1.5-2 4 1.5V18a2 2 0 0 1-2 2C10.5 20 4 13.5 4 6a2 2 0 0 1 1-2Z"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              610 226 5045
+            </a>
           </div>
 
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">

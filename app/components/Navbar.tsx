@@ -21,15 +21,15 @@ export default function Navbar({ current = "Home" }: { current?: string }) {
           <Image src={logo} alt="Annur" className="h-8 w-auto sm:h-9" priority />
         </a>
 
-        <div className="hidden items-center gap-8 text-sm font-medium text-muted md:flex">
+        <div className="hidden items-center gap-8 text-sm font-medium text-white/70 md:flex">
           {links.map((link) => (
             <a
               key={link.label}
               href={link.href}
               className={
                 link.label === current
-                  ? "font-semibold text-foreground"
-                  : "transition-colors hover:text-foreground"
+                  ? "font-semibold text-white"
+                  : "transition-colors hover:text-white"
               }
             >
               {link.label}
@@ -40,7 +40,7 @@ export default function Navbar({ current = "Home" }: { current?: string }) {
         <div className="flex items-center gap-3">
           <a
             href="/contact"
-            className="hidden rounded-full border border-border px-5 py-2 text-sm font-semibold text-foreground transition-colors hover:border-silver-dark sm:inline-block"
+            className="hidden rounded-full border border-white/30 px-5 py-2 text-sm font-semibold text-white transition-colors hover:border-white/60 sm:inline-block"
           >
             Contact Us
           </a>
@@ -50,7 +50,7 @@ export default function Navbar({ current = "Home" }: { current?: string }) {
             onClick={() => setOpen((v) => !v)}
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border text-foreground md:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/30 text-white md:hidden"
           >
             <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5">
               {open ? (

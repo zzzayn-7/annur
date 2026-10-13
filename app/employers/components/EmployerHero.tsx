@@ -12,7 +12,7 @@ export default function EmployerHero() {
 
       <Navbar current="For Employers" />
 
-      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col items-center justify-start px-6 pt-14 text-center lg:px-12 lg:pt-20">
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col items-center justify-start px-6 pt-8 text-center lg:px-12 lg:pt-10">
         <span className="text-xs font-semibold uppercase tracking-widest text-white">
           For Employers
         </span>
@@ -21,7 +21,7 @@ export default function EmployerHero() {
           <span className="text-grey">Team That Moves You Forward</span>
         </h1>
 
-        <div className="mt-10 flex justify-center">
+        <div className="mt-6 flex justify-center">
           <a
             href="#enquiry"
             className="rounded-full bg-gradient-to-r from-dusk-rose to-dusk-plum px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-black/20 transition-transform hover:scale-[1.03]"

@@ -12,7 +12,7 @@ export default function CandidateHero() {
 
       <Navbar current="For Candidates" />
 
-      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col items-center justify-start px-6 pt-14 text-center lg:px-12 lg:pt-20">
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col items-center justify-start px-6 pt-8 text-center lg:px-12 lg:pt-10">
         <span className="text-xs font-semibold uppercase tracking-widest text-white">
           For Candidates
         </span>
@@ -21,7 +21,7 @@ export default function CandidateHero() {
           Here
         </h1>
 
-        <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
+        <div className="mt-6 flex flex-col justify-center gap-4 sm:flex-row">
           <a
             href="#opportunities"
             className="rounded-full bg-gradient-to-r from-dusk-rose to-dusk-plum px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-black/20 transition-transform hover:scale-[1.03]"

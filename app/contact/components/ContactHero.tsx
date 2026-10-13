@@ -12,7 +12,7 @@ export default function ContactHero() {
 
       <Navbar current="Contact" />
 
-      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col items-center justify-start px-6 pt-14 text-center lg:px-12 lg:pt-20">
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col items-center justify-start px-6 pt-8 text-center lg:px-12 lg:pt-10">
         <span className="text-xs font-semibold uppercase tracking-widest text-white">
           Contact Annur
         </span>
@@ -20,7 +20,7 @@ export default function ContactHero() {
           Let&rsquo;s Start the <span className="text-grey">Conversation</span>
         </h1>
 
-        <div className="mt-10 flex justify-center">
+        <div className="mt-6 flex justify-center">
           <a
             href="tel:+16102265045"
             className="inline-flex items-center gap-2 rounded-full border border-white bg-white/20 px-7 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/30"

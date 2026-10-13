@@ -12,7 +12,7 @@ export default function AboutHero() {
 
       <Navbar current="About" />
 
-      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col items-center justify-start px-6 pt-14 text-center lg:px-12 lg:pt-20">
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col items-center justify-start px-6 pt-8 text-center lg:px-12 lg:pt-10">
         <span className="text-xs font-semibold uppercase tracking-widest text-white">
           About Annur
         </span>

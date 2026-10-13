@@ -18,13 +18,13 @@ export default function CallToAction() {
 
         <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
           <a
-            href="#"
+            href="/employers#enquiry"
             className="rounded-full bg-gradient-to-r from-dusk-rose to-dusk-plum px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-black/20 transition-transform hover:scale-[1.03]"
           >
             I&rsquo;m Hiring
           </a>
           <a
-            href="#"
+            href="/candidates#cv-form"
             className="rounded-full border border-white/40 px-7 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:border-white/70"
           >
             Find a Role

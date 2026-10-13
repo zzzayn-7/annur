@@ -1,5 +1,5 @@
 const fieldClass =
-  "w-full rounded-xl border border-border bg-white px-4 py-2.5 text-sm text-foreground placeholder:text-silver-dark focus:border-brand-orange focus:outline-none focus:ring-2 focus:ring-brand-orange/20";
+  "w-full rounded-xl border border-border bg-white px-4 py-2.5 text-sm text-foreground placeholder:text-silver-dark focus:border-dusk-sky focus:outline-none focus:ring-2 focus:ring-dusk-sky/30";
 const labelClass = "text-sm font-medium text-foreground";
 
 export default function EnquiryForm() {
@@ -7,7 +7,7 @@ export default function EnquiryForm() {
     <section id="enquiry" className="bg-background py-24">
       <div className="mx-auto max-w-3xl px-6 lg:px-8">
         <div className="text-center">
-          <span className="text-xs font-semibold uppercase tracking-widest text-brand-red">
+          <span className="text-xs font-semibold uppercase tracking-widest text-grey">
             Get Started
           </span>
           <h2 className="mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -75,7 +75,7 @@ export default function EnquiryForm() {
                 id="jobDescription"
                 name="jobDescription"
                 type="file"
-                className={`${fieldClass} file:mr-4 file:rounded-full file:border-0 file:bg-gradient-to-r file:from-brand-red file:to-brand-orange file:px-4 file:py-2 file:text-xs file:font-semibold file:text-white`}
+                className={`${fieldClass} file:mr-4 file:rounded-full file:border file:border-grey file:bg-transparent file:px-4 file:py-2 file:text-xs file:font-semibold file:text-grey`}
               />
             </div>
             <div className="flex flex-col gap-2 sm:col-span-2">
@@ -93,9 +93,9 @@ export default function EnquiryForm() {
 
           <button
             type="submit"
-            className="mt-8 w-full rounded-full bg-gradient-to-r from-brand-red to-brand-orange px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-orange/20 transition-transform hover:scale-[1.01] sm:w-auto"
+            className="mt-8 w-full rounded-full bg-gradient-to-r from-dusk-rose to-dusk-plum px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-black/20 transition-transform hover:scale-[1.01] sm:w-auto"
           >
-            Submit Hiring Requirement
+            Submit
           </button>
         </form>
       </div>

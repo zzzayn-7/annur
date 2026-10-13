@@ -10,6 +10,20 @@
   --brand-red: #ef4444;
   --brand-orange: #f97316;
   --maroon: #4a1113;
+
+  /* New revamp palette (pending rollout) */
+  --dusk-sky: #c7dbf7;
+  --dusk-sky-deep: #4a72b0;
+  --dusk-lavender: #bfc7de;
+  --dusk-plum: #75708c;
+  --dusk-rose: #c59594;
+  --dusk-ink: #010101;
+
+  /* Canonical "grey" — same value as dusk-plum, used whenever "grey" is requested */
+  --grey: #75708c;
+
+  /* Dim/muted orange — for accents that need "orange" without full vibrancy */
+  --dim-orange: #bd9193;
 }
 
 @theme inline {
@@ -22,6 +36,14 @@
   --color-brand-red: var(--brand-red);
   --color-brand-orange: var(--brand-orange);
   --color-maroon: var(--maroon);
+  --color-dusk-sky: var(--dusk-sky);
+  --color-dusk-sky-deep: var(--dusk-sky-deep);
+  --color-dusk-lavender: var(--dusk-lavender);
+  --color-dusk-plum: var(--dusk-plum);
+  --color-dusk-rose: var(--dusk-rose);
+  --color-dusk-ink: var(--dusk-ink);
+  --color-grey: var(--grey);
+  --color-dim-orange: var(--dim-orange);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }

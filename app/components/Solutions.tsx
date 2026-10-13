@@ -92,13 +92,32 @@ const solutions = [
 
 export default function Solutions() {
   return (
-    <section className="bg-silver/20 py-24">
-      <div className="mx-auto max-w-6xl px-6 lg:px-8">
+    <section className="relative overflow-hidden bg-gradient-to-b from-gray-100 via-gray-50 to-silver py-24">
+      <svg
+        className="absolute inset-x-0 bottom-0 h-64 w-full text-dusk-lavender/70"
+        viewBox="0 0 1600 400"
+        preserveAspectRatio="none"
+        aria-hidden
+      >
+        <path
+          fill="currentColor"
+          d="M0,160 C300,80 500,240 800,180 C1100,120 1300,260 1600,180 L1600,400 L0,400 Z"
+        />
+        <path
+          d="M0,160 C300,80 500,240 800,180 C1100,120 1300,260 1600,180"
+          fill="none"
+          stroke="white"
+          strokeOpacity="0.4"
+          strokeWidth="2"
+        />
+      </svg>
+
+      <div className="relative mx-auto max-w-6xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <span className="text-xs font-semibold uppercase tracking-widest text-brand-red">
+          <span className="text-xs font-semibold uppercase tracking-widest text-grey">
             What We Offer
           </span>
-          <h2 className="mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-dusk-ink sm:text-4xl">
             Recruitment Solutions
           </h2>
         </div>
@@ -107,15 +126,15 @@ export default function Solutions() {
           {solutions.map((solution) => (
             <div
               key={solution.title}
-              className="rounded-2xl border border-border bg-white/70 p-6 transition-colors hover:border-silver-dark"
+              className="rounded-2xl border border-dusk-plum/10 bg-white p-6 shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.03] hover:shadow-lg"
             >
-              <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-brand-red to-brand-orange text-white">
+              <div className="inline-flex h-12 w-12 items-center justify-center rounded-full border-2 border-dusk-sky-deep bg-transparent text-dusk-sky-deep">
                 {solution.icon}
               </div>
-              <h3 className="mt-4 text-base font-semibold text-foreground">
+              <h3 className="mt-5 text-base font-bold text-dusk-ink">
                 {solution.title}
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted">
+              <p className="mt-2 text-sm leading-relaxed text-dusk-plum/80">
                 {solution.description}
               </p>
             </div>

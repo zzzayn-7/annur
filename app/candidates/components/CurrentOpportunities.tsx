@@ -1,6 +1,8 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
+import Image from "next/image";
+import bgImage from "@/public/images/p4-s3-bg.png";
 
 const jobs = [
   {
@@ -53,7 +55,7 @@ const types = ["All Types", ...new Set(jobs.map((job) => job.type))];
 const levels = ["All Levels", ...new Set(jobs.map((job) => job.level))];
 
 const selectClass =
-  "w-full rounded-xl border border-border bg-white px-4 py-2.5 text-sm text-foreground focus:border-brand-orange focus:outline-none focus:ring-2 focus:ring-brand-orange/20";
+  "w-full rounded-xl border border-silver bg-transparent px-4 py-2.5 text-sm text-foreground backdrop-blur-sm focus:border-dusk-sky focus:outline-none focus:ring-2 focus:ring-dusk-sky/30";
 
 function PinIcon() {
   return (
@@ -99,6 +101,24 @@ export default function CurrentOpportunities() {
   const [type, setType] = useState("All Types");
   const [level, setLevel] = useState("All Levels");
 
+  const scrollerRef = useRef<HTMLDivElement>(null);
+  const drag = useRef({ down: false, startX: 0, startScroll: 0 });
+
+  const onPointerDown = (e: React.PointerEvent) => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    drag.current = { down: true, startX: e.clientX, startScroll: el.scrollLeft };
+    el.setPointerCapture(e.pointerId);
+  };
+  const onPointerMove = (e: React.PointerEvent) => {
+    if (!drag.current.down || !scrollerRef.current) return;
+    scrollerRef.current.scrollLeft =
+      drag.current.startScroll - (e.clientX - drag.current.startX);
+  };
+  const onPointerUp = () => {
+    drag.current.down = false;
+  };
+
   const filteredJobs = useMemo(() => {
     return jobs.filter((job) => {
       const matchesKeyword = job.title
@@ -119,18 +139,22 @@ export default function CurrentOpportunities() {
   }, [keyword, location, industry, type, level]);
 
   return (
-    <section id="opportunities" className="bg-brand-orange py-24">
-      <div className="mx-auto max-w-6xl px-6 lg:px-8">
+    <section id="opportunities" className="relative w-full py-24">
+      <div className="absolute inset-0 overflow-hidden">
+        <Image src={bgImage} alt="" fill className="object-cover" aria-hidden />
+      </div>
+
+      <div className="relative mx-auto max-w-6xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <span className="text-xs font-semibold uppercase tracking-widest text-white/80">
+          <span className="text-xs font-semibold uppercase tracking-widest text-grey">
             Current Opportunities
           </span>
-          <h2 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-dusk-ink sm:text-4xl">
             Find Your Next Role
           </h2>
         </div>
 
-        <div className="mt-10 rounded-2xl bg-white p-5 shadow-sm sm:p-6">
+        <div className="mt-10 rounded-2xl border border-silver bg-transparent p-5 shadow-sm backdrop-blur-sm sm:p-6">
           <input
             type="text"
             value={keyword}
@@ -163,50 +187,64 @@ export default function CurrentOpportunities() {
         </div>
 
         {filteredJobs.length === 0 ? (
-          <p className="mt-10 text-center text-sm font-medium text-white/90">
+          <p className="mt-10 text-center text-sm font-medium text-dusk-plum">
             No opportunities match your filters right now.
           </p>
         ) : (
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="relative mt-10">
+            <div
+              ref={scrollerRef}
+              onPointerDown={onPointerDown}
+              onPointerMove={onPointerMove}
+              onPointerUp={onPointerUp}
+              onPointerLeave={onPointerUp}
+              className="flex cursor-grab touch-pan-y gap-5 overflow-x-auto pb-2 select-none active:cursor-grabbing [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            >
             {filteredJobs.map((job) => (
-              <div key={job.title} className="flex h-full flex-col rounded-2xl bg-white p-6 shadow-sm">
-                <h3 className="text-lg font-bold leading-snug text-brand-orange">
+              <div
+                key={job.title}
+                className="flex h-[300px] w-[190px] shrink-0 flex-col rounded-3xl border border-silver bg-transparent p-5 shadow-sm backdrop-blur-sm sm:h-[340px] sm:w-[230px]"
+              >
+                <h3 className="text-base font-bold leading-snug text-grey">
                   {job.title}
                 </h3>
-                <div className="mt-5 space-y-2.5 text-sm text-muted">
+                <div className="mt-4 space-y-2 text-xs text-muted">
                   <div className="flex items-center gap-2">
-                    <PinIcon />
+                    <span className="text-dusk-sky-deep">
+                      <PinIcon />
+                    </span>
                     {job.location}
                   </div>
                   <div className="flex items-center gap-2">
-                    <TagIcon />
+                    <span className="text-dusk-sky-deep">
+                      <TagIcon />
+                    </span>
                     {job.industry}
                   </div>
                   <div className="flex items-center gap-2">
-                    <BriefcaseIcon />
+                    <span className="text-dusk-sky-deep">
+                      <BriefcaseIcon />
+                    </span>
                     {job.type}
                   </div>
                   <div className="flex items-center gap-2">
-                    <LevelIcon />
+                    <span className="text-dusk-sky-deep">
+                      <LevelIcon />
+                    </span>
                     {job.level}
                   </div>
                 </div>
-                <div className="mt-auto flex flex-wrap gap-3 pt-8">
-                  <a
-                    href="#"
-                    className="inline-flex items-center gap-2 rounded-full border border-brand-orange px-5 py-2.5 text-sm font-semibold text-brand-orange transition-colors hover:bg-brand-orange hover:text-white"
-                  >
-                    View Details
-                  </a>
+                <div className="mt-auto pt-6">
                   <a
                     href="#cv-form"
-                    className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-red to-brand-orange px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-brand-orange/20 transition-transform hover:scale-[1.03]"
+                    className="inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-dusk-rose to-dusk-plum px-4 py-2 text-xs font-semibold text-white shadow-lg shadow-black/20 transition-transform hover:scale-[1.03]"
                   >
                     Apply Now
                   </a>
                 </div>
               </div>
             ))}
+            </div>
           </div>
         )}
       </div>

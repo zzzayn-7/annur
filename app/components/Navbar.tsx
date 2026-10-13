@@ -11,25 +11,40 @@ const links = [
   { label: "For Candidates", href: "/candidates" },
 ];
 
-export default function Navbar({ current = "Home" }: { current?: string }) {
+export default function Navbar({
+  current = "Home",
+  theme = "dark",
+}: {
+  current?: string;
+  theme?: "dark" | "light";
+}) {
   const [open, setOpen] = useState(false);
+  const isLight = theme === "light";
 
   return (
-    <nav className="relative z-20 mx-auto max-w-7xl px-6 py-6 lg:px-8">
+    <nav className="relative z-20 w-full px-6 py-6 lg:px-12">
       <div className="flex items-center justify-between">
         <a href="/" onClick={() => setOpen(false)}>
-          <Image src={logo} alt="Annur" className="h-8 w-auto sm:h-9" priority />
+          <Image src={logo} alt="Annur" className="h-11 w-auto sm:h-14" priority />
         </a>
 
-        <div className="hidden items-center gap-8 text-sm font-medium text-white/70 md:flex">
+        <div
+          className={`hidden items-center gap-8 text-sm font-medium md:flex ${
+            isLight ? "text-dusk-plum" : "text-white/70"
+          }`}
+        >
           {links.map((link) => (
             <a
               key={link.label}
               href={link.href}
               className={
                 link.label === current
-                  ? "font-semibold text-white"
-                  : "transition-colors hover:text-white"
+                  ? isLight
+                    ? "font-semibold text-dusk-ink"
+                    : "font-semibold text-white"
+                  : isLight
+                    ? "transition-colors hover:text-dusk-ink"
+                    : "transition-colors hover:text-white"
               }
             >
               {link.label}
@@ -40,7 +55,11 @@ export default function Navbar({ current = "Home" }: { current?: string }) {
         <div className="flex items-center gap-3">
           <a
             href="/contact"
-            className="hidden rounded-full border border-white/30 px-5 py-2 text-sm font-semibold text-white transition-colors hover:border-white/60 sm:inline-block"
+            className={`hidden rounded-full border px-5 py-2 text-sm font-semibold transition-colors sm:inline-block ${
+              isLight
+                ? "border-dusk-plum/30 text-dusk-ink hover:border-dusk-plum/60"
+                : "border-white/30 text-white hover:border-white/60"
+            }`}
           >
             Contact Us
           </a>
@@ -50,7 +69,9 @@ export default function Navbar({ current = "Home" }: { current?: string }) {
             onClick={() => setOpen((v) => !v)}
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/30 text-white md:hidden"
+            className={`inline-flex h-10 w-10 items-center justify-center rounded-full border md:hidden ${
+              isLight ? "border-dusk-plum/30 text-dusk-ink" : "border-white/30 text-white"
+            }`}
           >
             <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5">
               {open ? (

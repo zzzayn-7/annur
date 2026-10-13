@@ -1,29 +1,29 @@
+import Image from "next/image";
 import Navbar from "@/app/components/Navbar";
-import HeroImageBackground from "@/app/components/HeroImageBackground";
+import bgImage from "@/public/images/p2-hero.png";
 
 export default function AboutHero() {
   return (
-    <section className="relative min-h-[480px] overflow-hidden bg-[#07070a] lg:min-h-[580px]">
-      <HeroImageBackground />
+    <section className="relative flex w-full flex-col bg-white py-16 lg:aspect-[2172/724] lg:py-0">
+      <div className="absolute inset-0 overflow-hidden">
+        <Image src={bgImage} alt="" fill priority className="object-cover" aria-hidden />
+        <div className="absolute inset-0 bg-black/20" aria-hidden />
+      </div>
+
       <Navbar current="About" />
 
-      <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-start px-6 pt-10 pb-16 text-left lg:px-8 lg:pt-16 lg:pb-24">
-        <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold text-white/80 backdrop-blur-sm">
-          <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-br from-brand-red to-brand-orange" />
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col items-center justify-start px-6 pt-14 text-center lg:px-12 lg:pt-20">
+        <span className="text-xs font-semibold uppercase tracking-widest text-white">
           About Annur
         </span>
-
-        <h1 className="mt-6 max-w-xl text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
-          Connecting People,{" "}
-          <span className="bg-gradient-to-r from-brand-red to-brand-orange bg-clip-text text-transparent">
-            Not Just Positions
+        <h1 className="mt-4 max-w-xl text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl">
+          People at the{" "}
+          <span className="text-grey">
+            Heart
+            <br />
+            of Progress
           </span>
         </h1>
-
-        <p className="mt-6 max-w-lg text-base text-white/70 sm:text-lg">
-          ANNUR is a people-focused recruitment agency built on
-          understanding, honesty, and long-term partnership.
-        </p>
       </div>
     </section>
   );

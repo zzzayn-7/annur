@@ -1,10 +1,13 @@
+import Image from "next/image";
 import Reveal from "./Reveal";
+import sectionBg from "@/public/images/p1s4-bg.png";
 
 const steps = [
   {
     title: "Understand",
     description:
       "We learn about the role, organization, goals, and ideal candidate profile.",
+    offset: "lg:translate-y-32",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6">
         <path
@@ -22,6 +25,7 @@ const steps = [
     title: "Identify",
     description:
       "We search, assess, and shortlist professionals with the right experience and potential.",
+    offset: "lg:translate-y-14",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6">
         <rect x="6" y="4" width="12" height="16" rx="2" stroke="currentColor" strokeWidth="1.5" />
@@ -34,6 +38,7 @@ const steps = [
     title: "Connect",
     description:
       "We introduce carefully matched candidates and coordinate the selection process.",
+    offset: "lg:-translate-y-6",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6">
         <circle cx="9" cy="12" r="6" stroke="currentColor" strokeWidth="1.5" />
@@ -45,6 +50,7 @@ const steps = [
     title: "Support",
     description:
       "We remain involved through hiring, onboarding, and successful placement.",
+    offset: "lg:-translate-y-24",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6">
         <path
@@ -61,60 +67,40 @@ const steps = [
 
 export default function HowWeWork() {
   return (
-    <section className="bg-background py-24">
-      <div className="mx-auto max-w-6xl px-6 lg:px-8">
+    <section className="relative w-full bg-gray-100 py-24 lg:py-40">
+      <div className="absolute inset-0 overflow-hidden">
+        <Image src={sectionBg} alt="" fill className="object-cover" aria-hidden />
+      </div>
+
+      <div className="relative mx-auto max-w-6xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <span className="text-xs font-semibold uppercase tracking-widest text-brand-red">
+          <span className="text-xs font-semibold uppercase tracking-widest text-grey">
             Our Process
           </span>
-          <h2 className="mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-dusk-ink sm:text-4xl">
             How We Work
           </h2>
         </div>
 
-        <div className="relative mt-20">
-          <div
-            aria-hidden
-            className="pointer-events-none absolute left-[12.5%] right-[12.5%] top-8 hidden h-px bg-border sm:block"
-          >
-            <span className="absolute top-1/2 h-2 w-16 -translate-y-1/2 rounded-full bg-gradient-to-r from-brand-red to-brand-orange opacity-80 blur-[2px] animate-flow-x" />
-            <span
-              className="absolute top-1/2 h-2 w-10 -translate-y-1/2 rounded-full bg-gradient-to-r from-brand-orange to-brand-red opacity-60 blur-[2px] animate-flow-x"
-              style={{ animationDelay: "1.6s" }}
-            />
-          </div>
-
-          <div className="grid gap-12 sm:grid-cols-4 sm:gap-6">
+        <div className="relative mt-28 lg:mt-40 lg:pb-32">
+          <div className="grid gap-14 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
             {steps.map((step, i) => (
               <Reveal
                 key={step.title}
                 delay={i * 120}
-                className="relative flex flex-col items-center text-center"
+                className={`${step.offset} relative`}
               >
-                {i < steps.length - 1 && (
-                  <div
-                    aria-hidden
-                    className="pointer-events-none absolute left-8 top-16 h-[calc(100%+1rem)] w-px overflow-hidden bg-border sm:hidden"
-                  >
-                    <span
-                      className="absolute left-1/2 h-10 w-2 -translate-x-1/2 rounded-full bg-gradient-to-b from-brand-red to-brand-orange opacity-70 blur-[2px] animate-flow-y"
-                      style={{ animationDelay: `${i * 0.5}s` }}
-                    />
+                <div className="rounded-2xl border border-dusk-plum/10 bg-white/95 p-6 shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.03] hover:shadow-lg">
+                  <div className="inline-flex h-14 w-14 items-center justify-center rounded-full border-2 border-dusk-sky-deep bg-transparent text-dusk-sky-deep">
+                    {step.icon}
                   </div>
-                )}
-
-                <div className="relative z-10 flex h-16 w-16 items-center justify-center rounded-full border border-border bg-white text-brand-red shadow-sm">
-                  {step.icon}
-                  <span className="absolute -top-2 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-gradient-to-br from-brand-red to-brand-orange text-[10px] font-bold text-white">
-                    {`0${i + 1}`}
-                  </span>
+                  <h3 className="mt-5 text-lg font-bold text-dusk-ink">
+                    {step.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-dusk-plum/80">
+                    {step.description}
+                  </p>
                 </div>
-                <h3 className="mt-5 text-base font-semibold text-foreground">
-                  {step.title}
-                </h3>
-                <p className="mt-2 max-w-[15rem] text-sm leading-relaxed text-muted">
-                  {step.description}
-                </p>
               </Reveal>
             ))}
           </div>

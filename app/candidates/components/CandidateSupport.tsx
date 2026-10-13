@@ -1,4 +1,6 @@
+import Image from "next/image";
 import Reveal from "@/app/components/Reveal";
+import bgImage from "@/public/images/p4-s1-support-bg.png";
 
 const items = [
   {
@@ -38,8 +40,8 @@ const items = [
     description: "Your information is handled professionally and carefully.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5">
-        <rect x="4" y="10" width="16" height="10" rx="2" stroke="currentColor" strokeWidth="1.5" />
-        <path d="M7.5 10V7a4.5 4.5 0 0 1 9 0v3" stroke="currentColor" strokeWidth="1.5" />
+        <rect x="5" y="10.5" width="14" height="9.5" rx="2" stroke="currentColor" strokeWidth="1.5" />
+        <path d="M8 10.5V7.5a4 4 0 0 1 8 0v3" stroke="currentColor" strokeWidth="1.5" />
       </svg>
     ),
   },
@@ -47,7 +49,7 @@ const items = [
     title: "Continued Support",
     description: "Assistance from your first conversation through placement.",
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5">
+      <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6">
         <path
           d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z"
           stroke="currentColor"
@@ -62,34 +64,84 @@ const items = [
 
 export default function CandidateSupport() {
   return (
-    <section className="bg-silver/20 py-24">
-      <div className="mx-auto max-w-6xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <span className="text-xs font-semibold uppercase tracking-widest text-brand-red">
-            What You Get
-          </span>
-          <h2 className="mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            How We Support Candidates
-          </h2>
-        </div>
+    <section className="relative w-full py-24">
+      <div className="absolute inset-0 overflow-hidden">
+        <Image src={bgImage} alt="" fill className="object-cover" aria-hidden />
+      </div>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {items.map((item, i) => (
-            <Reveal key={item.title} delay={i * 80}>
-              <div className="h-full rounded-2xl border border-border bg-white/70 p-6">
-                <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-brand-red to-brand-orange text-white">
+      <div className="relative mx-auto grid max-w-7xl gap-16 px-6 py-8 lg:grid-cols-2 lg:items-center lg:px-12">
+        <Reveal direction="left">
+          <span className="text-xs font-semibold uppercase tracking-widest text-grey">
+            For Candidates
+          </span>
+          <h2 className="mt-4 text-4xl font-extrabold leading-tight tracking-tight text-dusk-ink sm:text-5xl">
+            More Than a
+            <br />
+            Job Search
+          </h2>
+          <p className="mt-6 max-w-md text-base leading-relaxed text-dusk-plum sm:text-lg">
+            ANNUR takes the time to understand your experience, strengths,
+            and career goals. We connect you with opportunities where you
+            can contribute, develop, and build a meaningful future.
+          </p>
+
+          <a
+            href="#opportunities"
+            className="group mt-8 inline-flex items-center gap-3 text-base font-semibold text-dusk-ink"
+          >
+            <span className="relative pb-1">
+              Explore Opportunities
+              <span className="absolute inset-x-0 bottom-0 h-0.5 bg-grey" />
+            </span>
+            <span
+              aria-hidden
+              className="transition-transform duration-300 group-hover:translate-x-1"
+            >
+              &rarr;
+            </span>
+          </a>
+        </Reveal>
+
+        <Reveal direction="right" className="lg:pl-12 xl:pl-20">
+          <h2 className="text-3xl font-extrabold tracking-tight text-dusk-ink sm:text-4xl">
+            Support at Every Step
+          </h2>
+
+          <div className="relative mt-10 flex flex-col gap-10">
+            <svg
+              aria-hidden
+              className="pointer-events-none absolute top-6 bottom-6 left-7 hidden w-10 sm:block"
+              viewBox="0 0 40 600"
+              preserveAspectRatio="none"
+            >
+              <path
+                d="M20,0 C0,60 40,120 20,180 C0,240 40,300 20,360 C0,420 40,480 20,540 C0,570 40,590 20,600"
+                fill="none"
+                stroke="var(--dusk-sky-deep)"
+                strokeOpacity="0.35"
+                strokeWidth="2"
+                strokeDasharray="2 8"
+                strokeLinecap="round"
+              />
+            </svg>
+
+            {items.map((item) => (
+              <div key={item.title} className="relative flex items-start gap-5">
+                <div className="relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-dusk-sky-deep/30 bg-white text-dusk-sky-deep shadow-sm">
                   {item.icon}
                 </div>
-                <h3 className="mt-4 text-base font-semibold text-foreground">
-                  {item.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">
-                  {item.description}
-                </p>
+                <div>
+                  <h3 className="text-base font-bold text-dusk-ink sm:text-lg">
+                    {item.title}
+                  </h3>
+                  <p className="mt-1 text-sm leading-relaxed text-dusk-plum sm:text-base">
+                    {item.description}
+                  </p>
+                </div>
               </div>
-            </Reveal>
-          ))}
-        </div>
+            ))}
+          </div>
+        </Reveal>
       </div>
     </section>
   );

@@ -1,4 +1,6 @@
+import Image from "next/image";
 import Reveal from "@/app/components/Reveal";
+import bgImage from "@/public/images/why-bg.png";
 
 const points = [
   {
@@ -59,13 +61,18 @@ const points = [
 
 export default function WhyAnnur() {
   return (
-    <section className="bg-silver/20 py-24">
-      <div className="mx-auto max-w-6xl px-6 lg:px-8">
+    <section className="relative w-full py-24">
+      <div className="absolute inset-0 overflow-hidden">
+        <Image src={bgImage} alt="" fill className="object-cover" aria-hidden />
+        <div className="absolute inset-0 bg-black/15" aria-hidden />
+      </div>
+
+      <div className="relative mx-auto max-w-6xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <span className="text-xs font-semibold uppercase tracking-widest text-brand-red">
+          <span className="text-xs font-semibold uppercase tracking-widest text-grey">
             Why Annur
           </span>
-          <h2 className="mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-dusk-ink sm:text-4xl">
             What Sets Us Apart
           </h2>
         </div>
@@ -73,14 +80,14 @@ export default function WhyAnnur() {
         <div className="mt-14 grid gap-6 sm:grid-cols-2">
           {points.map((point, i) => (
             <Reveal key={point.title} delay={i * 100}>
-              <div className="h-full rounded-2xl border border-border bg-white/70 p-6">
-                <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-brand-red to-brand-orange text-white">
+              <div className="h-full rounded-2xl border border-white/30 bg-white/10 p-6 backdrop-blur-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-white/20">
+                <div className="inline-flex h-10 w-10 items-center justify-center rounded-full border-2 border-dusk-sky-deep bg-transparent text-dusk-sky-deep">
                   {point.icon}
                 </div>
-                <h3 className="mt-4 text-base font-semibold text-foreground">
+                <h3 className="mt-4 text-base font-semibold text-dusk-ink">
                   {point.title}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">
+                <p className="mt-2 text-sm leading-relaxed text-dusk-plum">
                   {point.description}
                 </p>
               </div>

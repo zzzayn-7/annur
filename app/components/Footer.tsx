@@ -1,19 +1,12 @@
 import Image from "next/image";
 import logo from "@/public/images/logo.png";
 
-const linkGroups = [
-  {
-    heading: "Company",
-    links: ["About", "Sectors", "How We Work"],
-  },
-  {
-    heading: "For Employers",
-    links: ["Recruitment Solutions", "Hire Talent"],
-  },
-  {
-    heading: "For Candidates",
-    links: ["Current Openings", "Find Opportunities"],
-  },
+const pageLinks = [
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "For Employers", href: "/employers" },
+  { label: "For Candidates", href: "/candidates" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export default function Footer() {
@@ -22,7 +15,7 @@ export default function Footer() {
   return (
     <footer className="border-t border-border bg-background">
       <div className="mx-auto max-w-6xl px-6 py-14 lg:px-8">
-        <div className="flex flex-col gap-12 sm:flex-row sm:justify-between">
+        <div className="grid grid-cols-1 gap-12 sm:grid-cols-3">
           <div className="max-w-xs">
             <Image src={logo} alt="Annur" className="h-8 w-auto" />
             <p className="mt-4 text-sm leading-relaxed text-muted">
@@ -31,7 +24,7 @@ export default function Footer() {
             </p>
             <a
               href="tel:+16102265045"
-              className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-foreground transition-colors hover:text-brand-red"
+              className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-foreground transition-colors hover:text-dusk-sky-deep"
             >
               <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4 shrink-0">
                 <path
@@ -45,27 +38,23 @@ export default function Footer() {
             </a>
           </div>
 
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
-            {linkGroups.map((group) => (
-              <div key={group.heading}>
-                <h4 className="text-sm font-semibold text-foreground">
-                  {group.heading}
-                </h4>
-                <ul className="mt-4 space-y-3">
-                  {group.links.map((link) => (
-                    <li key={link}>
-                      <a
-                        href="#"
-                        className="text-sm text-muted transition-colors hover:text-brand-red"
-                      >
-                        {link}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+          <div>
+            <h4 className="text-sm font-semibold text-foreground">Pages</h4>
+            <ul className="mt-4 space-y-3">
+              {pageLinks.map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    className="text-sm text-muted transition-colors hover:text-dusk-sky-deep"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
+
+          <div aria-hidden className="hidden sm:block" />
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 sm:flex-row">
@@ -76,7 +65,7 @@ export default function Footer() {
             <a
               href="#"
               aria-label="LinkedIn"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted transition-colors hover:border-brand-orange hover:text-brand-orange"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted transition-colors hover:border-dusk-sky-deep hover:text-dusk-sky-deep"
             >
               <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4">
                 <rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" strokeWidth="1.5" />
@@ -93,7 +82,7 @@ export default function Footer() {
             <a
               href="#"
               aria-label="X (Twitter)"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted transition-colors hover:border-brand-orange hover:text-brand-orange"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted transition-colors hover:border-dusk-sky-deep hover:text-dusk-sky-deep"
             >
               <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4">
                 <line x1="5" y1="5" x2="19" y2="19" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
@@ -103,7 +92,7 @@ export default function Footer() {
             <a
               href="#"
               aria-label="Email"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted transition-colors hover:border-brand-orange hover:text-brand-orange"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted transition-colors hover:border-dusk-sky-deep hover:text-dusk-sky-deep"
             >
               <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4">
                 <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="1.5" />

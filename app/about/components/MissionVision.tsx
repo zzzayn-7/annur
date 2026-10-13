@@ -1,40 +1,60 @@
+import Image, { type StaticImageData } from "next/image";
 import Reveal from "@/app/components/Reveal";
+import missionImage from "@/public/images/mission.png";
+import visionImage from "@/public/images/vision.png";
+
+type Card = {
+  title: string;
+  description: string;
+  image: StaticImageData;
+  direction: "left" | "right";
+};
+
+const cards: Card[] = [
+  {
+    title: "Our Mission",
+    description:
+      "Our mission is to connect the right people with the right opportunities through a thoughtful, transparent, and dependable recruitment experience.",
+    image: missionImage,
+    direction: "left",
+  },
+  {
+    title: "Our Vision",
+    description:
+      "Our vision is to shape a future where talent and opportunity come together seamlessly, enabling people and organizations to achieve lasting progress.",
+    image: visionImage,
+    direction: "right",
+  },
+];
 
 export default function MissionVision() {
   return (
-    <section className="bg-background py-24">
+    <section className="bg-silver pb-24">
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
-        <div className="grid overflow-hidden rounded-3xl md:grid-cols-2">
-          <Reveal direction="left">
-            <div className="flex h-full flex-col justify-center bg-silver p-10 sm:p-14">
-              <span className="text-xs font-semibold uppercase tracking-widest text-foreground/60">
-                Our Mission
-              </span>
-              <h3 className="mt-3 text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-                Clearer, More Personal Recruitment
-              </h3>
-              <p className="mt-4 text-sm leading-relaxed text-foreground/70 sm:text-base">
-                To make recruitment clearer, more personal, and more
-                effective by connecting the right people with opportunities
-                where they can succeed.
-              </p>
-            </div>
-          </Reveal>
+        <div className="grid gap-6 md:grid-cols-2">
+          {cards.map((card) => (
+            <Reveal key={card.title} direction={card.direction}>
+              <div className="group relative aspect-[4/5] w-full overflow-hidden rounded-2xl shadow-lg">
+                <Image
+                  src={card.image}
+                  alt=""
+                  fill
+                  className="object-cover"
+                />
 
-          <Reveal direction="right">
-            <div className="flex h-full flex-col justify-center bg-brand-orange p-10 sm:p-14">
-              <span className="text-xs font-semibold uppercase tracking-widest text-white/60">
-                Our Vision
-              </span>
-              <h3 className="mt-3 text-2xl font-bold tracking-tight text-white sm:text-3xl">
-                A Trusted Recruitment Partner
-              </h3>
-              <p className="mt-4 text-sm leading-relaxed text-white/75 sm:text-base">
-                To become a trusted recruitment partner for ambitious
-                professionals and organizations building for the future.
-              </p>
-            </div>
-          </Reveal>
+                <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-dusk-sky via-dusk-sky/60 to-transparent transition-[height] duration-500 ease-out group-hover:h-full" />
+
+                <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
+                  <h3 className="text-xl font-bold text-grey sm:text-2xl">
+                    {card.title}
+                  </h3>
+                  <p className="mt-0 max-h-0 overflow-hidden text-sm leading-relaxed text-grey opacity-0 transition-all duration-500 ease-out group-hover:mt-3 group-hover:max-h-40 group-hover:opacity-100 sm:text-base">
+                    {card.description}
+                  </p>
+                </div>
+              </div>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>

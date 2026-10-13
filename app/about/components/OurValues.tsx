@@ -1,4 +1,6 @@
+import Image from "next/image";
 import Reveal from "@/app/components/Reveal";
+import bgImage from "@/public/images/p2-s3.png";
 
 const values = [
   {
@@ -50,13 +52,17 @@ const values = [
 
 export default function OurValues() {
   return (
-    <section className="bg-brand-orange py-24">
-      <div className="mx-auto max-w-6xl px-6 lg:px-8">
+    <section className="relative w-full bg-silver py-24">
+      <div className="absolute inset-0 overflow-hidden">
+        <Image src={bgImage} alt="" fill className="object-cover" aria-hidden />
+      </div>
+
+      <div className="relative mx-auto max-w-6xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <span className="text-xs font-semibold uppercase tracking-widest text-white/80">
+          <span className="text-xs font-semibold uppercase tracking-widest text-grey">
             What We Stand For
           </span>
-          <h2 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-dusk-ink sm:text-4xl">
             Our Values
           </h2>
         </div>
@@ -64,14 +70,14 @@ export default function OurValues() {
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {values.map((value, i) => (
             <Reveal key={value.title} delay={i * 80}>
-              <div className="h-full rounded-2xl bg-white p-6 text-center shadow-sm">
-                <div className="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-brand-red to-brand-orange text-white">
+              <div className="h-full rounded-2xl border border-white/30 bg-white/10 p-6 text-center backdrop-blur-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-white/20">
+                <div className="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-full border-2 border-dusk-sky-deep bg-transparent text-dusk-sky-deep">
                   {value.icon}
                 </div>
-                <h3 className="mt-4 text-base font-semibold text-brand-orange">
+                <h3 className="mt-4 text-base font-semibold text-dusk-ink">
                   {value.title}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">
+                <p className="mt-2 text-sm leading-relaxed text-dusk-plum">
                   {value.description}
                 </p>
               </div>

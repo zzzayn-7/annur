@@ -1,41 +1,36 @@
+import Image from "next/image";
 import Navbar from "@/app/components/Navbar";
-import HeroImageBackground from "@/app/components/HeroImageBackground";
+import bgImage from "@/public/images/p2-hero.png";
 
 export default function CandidateHero() {
   return (
-    <section className="relative min-h-[520px] overflow-hidden bg-[#07070a] lg:min-h-[620px]">
-      <HeroImageBackground />
+    <section className="relative flex w-full flex-col bg-white py-16 lg:aspect-[2172/724] lg:py-0">
+      <div className="absolute inset-0 overflow-hidden">
+        <Image src={bgImage} alt="" fill priority className="object-cover" aria-hidden />
+        <div className="absolute inset-0 bg-black/20" aria-hidden />
+      </div>
+
       <Navbar current="For Candidates" />
 
-      <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-start px-6 pt-10 pb-16 text-left lg:px-8 lg:pt-16 lg:pb-24">
-        <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold text-white/80 backdrop-blur-sm">
-          <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-br from-brand-red to-brand-orange" />
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col items-center justify-start px-6 pt-14 text-center lg:px-12 lg:pt-20">
+        <span className="text-xs font-semibold uppercase tracking-widest text-white">
           For Candidates
         </span>
-
-        <h1 className="mt-6 max-w-xl text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
-          Your{" "}
-          <span className="bg-gradient-to-r from-brand-red to-brand-orange bg-clip-text text-transparent">
-            Next Opportunity
-          </span>{" "}
-          Starts Here
+        <h1 className="mt-4 max-w-xl text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl">
+          Your <span className="text-grey">Next Opportunity</span> Starts
+          Here
         </h1>
 
-        <p className="mt-6 max-w-lg text-base text-white/70 sm:text-lg">
-          Connect with opportunities aligned with your experience, ambitions,
-          and long-term career direction.
-        </p>
-
-        <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+        <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
           <a
             href="#opportunities"
-            className="rounded-full bg-gradient-to-r from-brand-red to-brand-orange px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-orange/20 transition-transform hover:scale-[1.03]"
+            className="rounded-full bg-gradient-to-r from-dusk-rose to-dusk-plum px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-black/20 transition-transform hover:scale-[1.03]"
           >
             Explore Opportunities
           </a>
           <a
             href="#cv-form"
-            className="rounded-full border border-white/30 px-7 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:border-white/60"
+            className="rounded-full border border-white bg-white/20 px-7 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/30"
           >
             Submit Your CV
           </a>

@@ -81,7 +81,7 @@ export default function CareerResources() {
                 href="#"
                 className="group flex h-full flex-col rounded-2xl bg-white p-6 shadow-sm transition-transform hover:-translate-y-1"
               >
-                <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-brand-red to-brand-orange text-white">
+                <div className="inline-flex h-10 w-10 items-center justify-center rounded-full border-2 border-dusk-sky-deep bg-transparent text-dusk-sky-deep">
                   {resource.icon}
                 </div>
                 <h3 className="mt-4 text-base font-semibold text-brand-orange">

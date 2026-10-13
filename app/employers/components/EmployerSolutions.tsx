@@ -1,4 +1,6 @@
+import Image from "next/image";
 import Reveal from "@/app/components/Reveal";
+import bgImage from "@/public/images/p3-s1-bg.png";
 
 const solutions = [
   {
@@ -74,28 +76,49 @@ const solutions = [
 
 export default function EmployerSolutions() {
   return (
-    <section className="bg-brand-orange py-24">
-      <div className="mx-auto max-w-6xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <span className="text-xs font-semibold uppercase tracking-widest text-white/80">
-            What We Offer
-          </span>
-          <h2 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">
-            Recruitment Solutions
+    <section className="relative w-full py-24">
+      <div className="absolute inset-0 overflow-hidden">
+        <Image
+          src={bgImage}
+          alt=""
+          fill
+          className="scale-105 object-cover blur-md"
+          aria-hidden
+        />
+      </div>
+
+      <div className="relative mx-auto max-w-6xl px-6 lg:px-8">
+        <Reveal direction="left">
+          <div className="flex items-center gap-3">
+            <span className="text-xs font-semibold uppercase tracking-widest text-grey">
+              Hiring With Purpose
+            </span>
+            <span className="h-px w-10 bg-dusk-rose/50" />
+          </div>
+          <h2 className="mt-4 text-4xl font-bold leading-tight tracking-tight text-dusk-ink sm:text-5xl">
+            Hiring Should Strengthen
+            <br />
+            Your Business
           </h2>
-        </div>
+          <p className="mt-6 max-w-md text-base leading-relaxed text-dusk-plum sm:text-lg">
+            Finding the right person involves more than matching skills to a
+            job description. ANNUR takes the time to understand your
+            organization, working culture, expectations, and future goals
+            before beginning the search.
+          </p>
+        </Reveal>
 
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {solutions.map((solution, i) => (
             <Reveal key={solution.title} delay={i * 80}>
-              <div className="h-full rounded-2xl bg-white p-6 shadow-sm">
-                <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-brand-red to-brand-orange text-white">
+              <div className="h-full rounded-2xl border border-white/50 bg-white/40 p-6 backdrop-blur-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-white/60">
+                <div className="inline-flex h-12 w-12 items-center justify-center rounded-full border-2 border-dusk-sky-deep bg-transparent text-dusk-sky-deep">
                   {solution.icon}
                 </div>
-                <h3 className="mt-4 text-base font-semibold text-brand-orange">
+                <h3 className="mt-4 text-base font-bold text-dusk-ink">
                   {solution.title}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">
+                <p className="mt-2 text-sm leading-relaxed text-dusk-plum">
                   {solution.description}
                 </p>
               </div>

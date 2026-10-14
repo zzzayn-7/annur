@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import CandidateHero from "./components/CandidateHero";
-import CurrentOpportunities from "./components/CurrentOpportunities";
-import CandidateSupport from "./components/CandidateSupport";
 import CandidateJourney from "./components/CandidateJourney";
-import SubmitCVForm from "./components/SubmitCVForm";
+import CandidateSupport from "./components/CandidateSupport";
+import CandidateOpportunitiesFlow from "./components/CandidateOpportunitiesFlow";
 
 export const metadata: Metadata = {
   title: "For Candidates — Annur",
@@ -17,8 +16,7 @@ export default function CandidatesPage() {
       <CandidateHero />
       <CandidateJourney />
       <CandidateSupport />
-      <CurrentOpportunities />
-      <SubmitCVForm />
+      <CandidateOpportunitiesFlow />
     </main>
   );
 }

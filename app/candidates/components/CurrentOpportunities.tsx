@@ -4,7 +4,15 @@ import { useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import bgImage from "@/public/images/p4-s3-bg.png";
 
-const jobs = [
+export type Job = {
+  title: string;
+  location: string;
+  industry: string;
+  type: string;
+  level: string;
+};
+
+export const jobs: Job[] = [
   {
     title: "Senior Backend Engineer",
     location: "Remote",
@@ -94,7 +102,15 @@ function TagIcon() {
   );
 }
 
-export default function CurrentOpportunities() {
+type CurrentOpportunitiesProps = {
+  onApply?: (job: Job) => void;
+  selectedJobTitle?: string;
+};
+
+export default function CurrentOpportunities({
+  onApply,
+  selectedJobTitle,
+}: CurrentOpportunitiesProps) {
   const [keyword, setKeyword] = useState("");
   const [location, setLocation] = useState("All Locations");
   const [industry, setIndustry] = useState("All Industries");
@@ -105,6 +121,9 @@ export default function CurrentOpportunities() {
   const drag = useRef({ down: false, startX: 0, startScroll: 0 });
 
   const onPointerDown = (e: React.PointerEvent) => {
+    if ((e.target as HTMLElement).closest("button, a, select, input")) {
+      return;
+    }
     const el = scrollerRef.current;
     if (!el) return;
     drag.current = { down: true, startX: e.clientX, startScroll: el.scrollLeft };
@@ -200,50 +219,71 @@ export default function CurrentOpportunities() {
               onPointerLeave={onPointerUp}
               className="flex cursor-grab touch-pan-y gap-5 overflow-x-auto pb-2 select-none active:cursor-grabbing [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
             >
-            {filteredJobs.map((job) => (
-              <div
-                key={job.title}
-                className="flex h-[300px] w-[190px] shrink-0 flex-col rounded-3xl border border-silver bg-transparent p-5 shadow-sm backdrop-blur-sm sm:h-[340px] sm:w-[230px]"
-              >
-                <h3 className="text-base font-bold leading-snug text-grey">
-                  {job.title}
-                </h3>
-                <div className="mt-4 space-y-2 text-xs text-muted">
-                  <div className="flex items-center gap-2">
-                    <span className="text-dusk-sky-deep">
-                      <PinIcon />
-                    </span>
-                    {job.location}
+            {filteredJobs.map((job) => {
+              const isSelected = selectedJobTitle === job.title;
+              return (
+                <div
+                  key={job.title}
+                  className={`flex h-[300px] w-[190px] shrink-0 flex-col rounded-3xl border ${
+                    isSelected
+                      ? "border-dusk-plum shadow-md ring-2 ring-dusk-plum/30 bg-white/40"
+                      : "border-silver bg-transparent"
+                  } p-5 shadow-sm backdrop-blur-sm transition-all sm:h-[340px] sm:w-[230px]`}
+                >
+                  <h3 className="text-base font-bold leading-snug text-grey">
+                    {job.title}
+                  </h3>
+                  <div className="mt-4 space-y-2 text-xs text-muted">
+                    <div className="flex items-center gap-2">
+                      <span className="text-dusk-sky-deep">
+                        <PinIcon />
+                      </span>
+                      {job.location}
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-dusk-sky-deep">
+                        <TagIcon />
+                      </span>
+                      {job.industry}
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-dusk-sky-deep">
+                        <BriefcaseIcon />
+                      </span>
+                      {job.type}
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-dusk-sky-deep">
+                        <LevelIcon />
+                      </span>
+                      {job.level}
+                    </div>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-dusk-sky-deep">
-                      <TagIcon />
-                    </span>
-                    {job.industry}
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-dusk-sky-deep">
-                      <BriefcaseIcon />
-                    </span>
-                    {job.type}
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-dusk-sky-deep">
-                      <LevelIcon />
-                    </span>
-                    {job.level}
+                  <div className="mt-auto pt-6">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        if (onApply) {
+                          onApply(job);
+                        } else {
+                          const formEl = document.getElementById("cv-form");
+                          if (formEl) {
+                            formEl.scrollIntoView({ behavior: "smooth" });
+                          }
+                        }
+                      }}
+                      className={`inline-flex w-full items-center justify-center rounded-full ${
+                        isSelected
+                          ? "bg-gradient-to-r from-dusk-plum to-dusk-sky-deep scale-[1.02]"
+                          : "bg-gradient-to-r from-dusk-rose to-dusk-plum hover:scale-[1.03]"
+                      } px-4 py-2 text-xs font-semibold text-white shadow-lg shadow-black/20 transition-all active:scale-[0.98] cursor-pointer`}
+                    >
+                      {isSelected ? "Selected ✓" : "Apply Now"}
+                    </button>
                   </div>
                 </div>
-                <div className="mt-auto pt-6">
-                  <a
-                    href="#cv-form"
-                    className="inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-dusk-rose to-dusk-plum px-4 py-2 text-xs font-semibold text-white shadow-lg shadow-black/20 transition-transform hover:scale-[1.03]"
-                  >
-                    Apply Now
-                  </a>
-                </div>
-              </div>
-            ))}
+              );
+            })}
             </div>
           </div>
         )}
